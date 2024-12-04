@@ -191,21 +191,35 @@ class ProblemSolutions {
         }
 
         //keep track of nodes already gone through
+        boolean[] checked = new boolean[numNodes];
         //keep track of groups found, so counter?
+        int count = 0;
+
         //go through each node to find groups
-        //use depth first to check and visit all connections? use helper method here?
-        //increase count after going through all nodes
+        for (i = 0; i < numNodes; i++){
+            if (!checked[i]){
+                //use depth first to check and visit all connections? use helper method here?
+               visitedNodes(i, graph, checked);
+                //increase count after going through all nodes
+                count++;
 
-        /* Helper method:
-         * for current node, keep track if visited or not
-         * see if node has neighbors
-         * if node does have neighbors, go through all neighbors
-         * if the neighbors not checked/visited call helper method
-
-         */
-
-
-        return -1;
+            }
+        }
+        return count;
     }
-
+    /* Helper method:  */
+    private void visitedNodes (int node, Map<Integer, List<Integer>> graph, boolean[] checked){
+        // for current node, keep track if visited or not
+        checked[node] = true;
+        //see if node has neighbors
+        if (graph.containsKey(node)){
+            //if node does have neighbors, go through all neighbors
+            for (int adjNode : graph.get(node)){
+                //if the neighbors not checked/visited call helper method
+                if (!checked[adjNode]){
+                    visitedNodes(adjNode, graph, checked);
+                }
+            }
+        }
+    }
 }
