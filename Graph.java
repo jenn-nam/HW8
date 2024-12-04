@@ -105,12 +105,40 @@ public class Graph {
   public int findRoot() {
 
     //count edges, so array?
+    int[] edgeCount = new int[numVertices];
     //go through each node
-    //increment count for node with edge
+    for (int i = 0; i < numVertices; i++) {
+      //for every vertex see where it pts
+      for (Integer dest : adjListArr[i]) {
+        //count each vertex as edg, so increase count
+        edgeCount[dest]++;
+      }
+    }
+
     //find root, so look for node with no edges
+    //count of potential roots
+    int roots = 0;
+    //store root vertex value
+    int valOfRoot = -1;
+
     //if more than one, return -1 (as instructed)
-    //if only one, store it
-    //return stored root if only one, or return -1 if more than one
-    return -1;
-  } 
+    for (int i = 0; i < numVertices; i++) {
+      System.out.println("Vertex " + i + " has " + edgeCount[i] + " incoming edges.");
+      //none points
+      if (edgeCount[i] == 0) {
+        //potential root found
+        roots++;
+        //save value of potential root
+        valOfRoot = vertexValues.get(i);
+      }
+    }
+    //check for one root only
+    if (roots == numVertices) {
+      //if only one, store it
+      return valOfRoot;
+    } else {
+      //return stored root if only one, or return -1 if more than one
+      return -1;
+    }
+  }
 }
