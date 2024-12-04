@@ -123,8 +123,7 @@ public class Graph {
 
     //if more than one, return -1 (as instructed)
     for (int i = 0; i < numVertices; i++) {
-      System.out.println("Vertex " + i + " has " + edgeCount[i] + " incoming edges.");
-      //none points
+      //none points/no edges
       if (edgeCount[i] == 0) {
         //potential root found
         roots++;
@@ -133,12 +132,11 @@ public class Graph {
       }
     }
     //check for one root only
-    if (roots == numVertices) {
-      //if only one, store it
-      return valOfRoot;
-    } else {
+    if (roots != 1) {
       //return stored root if only one, or return -1 if more than one
       return -1;
     }
+    //if only one, store it
+    return valOfRoot;
   }
 }
