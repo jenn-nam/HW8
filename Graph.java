@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *  Jennifer Nambo / 002
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -104,7 +104,13 @@ public class Graph {
   
   public int findRoot() {
 
-    // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME/SECTION AT TOP OF FILE
+    //count edges, so array?
+    //go through each node
+    //increment count for node with edge
+    //find root, so look for node with no edges
+    //if more than one, return -1 (as instructed)
+    //if only one, store it
+    //return stored root if only one, or return -1 if more than one
     return -1;
   } 
 }

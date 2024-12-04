@@ -190,8 +190,21 @@ class ProblemSolutions {
             }
         }
 
-        // YOUR CODE GOES HERE - you can add helper methods, you do not need
-        // to put all code in this method.
+        //keep track of nodes already gone through
+        //keep track of groups found, so counter?
+        //go through each node to find groups
+        //use depth first to check and visit all connections? use helper method here?
+        //increase count after going through all nodes
+
+        /* Helper method:
+         * for current node, keep track if visited or not
+         * see if node has neighbors
+         * if node does have neighbors, go through all neighbors
+         * if the neighbors not checked/visited call helper method
+
+         */
+
+
         return -1;
     }
 
