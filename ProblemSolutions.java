@@ -81,11 +81,43 @@ class ProblemSolutions {
         ArrayList<Integer>[] adj = getAdjList(numExams, 
                                         prerequisites); 
 
-        // ADD YOUR CODE HERE - ADD YOUR NAME / SECTION AT TOP OF FILE
-        return false;
+        //keep track of each node
+        int [] nodeStates = new int[numExams];
+        //examine nodes for cycles, helper method used here
+        for (int i = 0; i < numExams; i++) {
+            //node hasn't been visited
+            if (graphCycle(i, adj, nodeStates )) {
+                //cycle found
+                return false;
+            }
+        }
+        //no cycles found, exams completed
+        return true;
 
     }
-
+    /*helped  for canFinish.
+    Help see if cycles are in graph from a given node
+     */
+    private boolean graphCycle (int node, ArrayList<Integer>[] adj, int [] nodeStates) {
+        //node is visited in this case 1 is used to signify that
+        nodeStates[node] = 1;
+        //nodes are visited
+        for (int neighborNode : adj[node]) {
+            //when visiting nodes, if a node is set to 1, meaning it has been visited, then that is a cycle
+            if(nodeStates[neighborNode] == 1) {
+                return true;
+            }
+            //check if neighbor has not been visited + call hasCycle to see if there is a cycle at this pt
+            if (nodeStates[neighborNode] == 0 && graphCycle(neighborNode, adj, nodeStates)) {
+                //if cycle found then true
+                return true;
+            }
+        }
+        //after going through a node and neighbors + no cycles then set to 2
+        nodeStates[node] = 2;
+        //no cycles in node
+        return false;
+    }
 
     /**
      * Method getAdjList
